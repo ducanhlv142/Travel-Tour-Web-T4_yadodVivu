@@ -18,3 +18,5 @@ CREATE TABLE Expense (
     FOREIGN KEY (TourID) REFERENCES Tour(TourID),
     FOREIGN KEY (BookingID) REFERENCES Booking(BookingID)
 );
+
+edit here
