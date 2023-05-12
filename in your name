@@ -1,0 +1,20 @@
+CREATE TABLE Contact (
+  ContactID int primary key identity(1,1),
+  UserID int not null,
+  StaffID int null,
+  ContactDate datetime not null,
+  Content nvarchar(max) not null,
+  foreign key (UserID) references Users(UserID),
+  foreign key (StaffID) references Users(UserID)
+);
+
+CREATE TABLE Expense (
+    ExpenseID int PRIMARY KEY IDENTITY(1,1),
+    ExpenseType nvarchar(50) NOT NULL CHECK (ExpenseType IN ('Địa điểm du lịch', 'Khách sạn', 'Phương tiện di chuyển', 'Hướng dẫn viên du lịch', 'Chi phí khác')),
+    ExpenseAmount decimal(18, 2) NOT NULL,
+    ExpenseDate datetime NOT NULL,
+    TourID int NULL,
+    BookingID int NULL,
+    FOREIGN KEY (TourID) REFERENCES Tour(TourID),
+    FOREIGN KEY (BookingID) REFERENCES Booking(BookingID)
+);
